@@ -1,0 +1,34 @@
+﻿body
+{
+	font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+	background-color: #000;
+	color: #8F4;
+}
+
+#FireFooter
+{
+	width: 100%;
+	height: 64px;
+	background-image: url("/Draft/Content/Images/zelda_fire_render.gif");
+	background-size: 64px 64px;
+	background-repeat: repeat-x;
+	position: fixed;
+	bottom: 0;
+}
+
+#divContent
+{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 15em;
+	margin-bottom: 70px;
+	width: 50%;
+	text-align: center;
+	font-size: 24px;
+}
+
+a
+{
+	color: #8F4;
+	text-decoration: none;
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="527570355c8a4a8a97d988bb4222fb62" Name="Diagram1">
+        <EntityTypeShape EntityType="MTG_DRAFTModel.Player" Width="1.5" PointX="2.875" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MTG_DRAFTModel.Draft" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="MTG_DRAFTModel.MagicSet" Width="1.5" PointX="7.625" PointY="0.75" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player1I__145C0A3F" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player2I__15502E78" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player3I__164452B1" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player4I__173876EA" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player5I__182C9B23" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player6I__1920BF5C" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player7I__1A14E395" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Player8I__1B0907CE" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Set1Id__1BFD2C07" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Set2Id__1CF15040" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__Set3Id__1DE57479" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Drafts__WinnerId__1ED998B2" />
+        <EntityTypeShape EntityType="MTG_DRAFTModel.Announcement" Width="1.5" PointX="0.5" PointY="0.75" />
+        <AssociationConnector Association="MTG_DRAFTModel.FK__Announcem__Creat__36B12243" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

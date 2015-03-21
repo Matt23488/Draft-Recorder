@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Magic: The Gathering&reg; Draft Recorder</h1>
+
+<p>This site is designed for drafting! Everything is recorded: players, drafts, sets - everything.
+	It also will will handle all the administration stuff like pairing and round times, so get to drafting!</p>
+
+@if(Request.IsAuthenticated)
+{
+<span class="divButton" onclick="TestConnection()">Test SMS Connection to Phone</span>
+
+<script type="text/javascript">
+	function TestConnection()
+	{
+		$.ajax({
+			type: "POST",
+			url: "Main/TestConnection",
+			success: function(message)
+			{
+				alert(message);
+			},
+			error: function(message)
+			{
+				alert("Ajax error");
+			}
+		});
+	}
+</script>
+}

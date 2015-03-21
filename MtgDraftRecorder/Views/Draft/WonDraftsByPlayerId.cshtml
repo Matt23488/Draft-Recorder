@@ -1,0 +1,41 @@
+﻿@model System.Collections.Generic.IList<MtgDraftRecorder.ViewModels.DraftModel>
+
+@{
+    ViewBag.Title = "WonDraftsByPlayerId";
+}
+
+@if(Model.Count == 0)
+{
+	<h2>No data to display.</h2>
+}
+else
+{
+<h1>@Model[0].Winner's Wins</h1>
+
+<table class="tblList">
+	<thead>
+		@*<tr>
+			<th colspan="2" class="tblHeader"><div><strong>Wins</strong></div></th>
+		</tr>*@
+		<tr>
+			<th><div style="font-size: 20px;"><strong>Date</strong></div></th>
+			<th><div style="font-size: 20px;"><strong>Sets</strong></div></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var obj in Model)
+		{
+			<tr class="tblDataRow">
+				<td><div>@obj.DraftDate.ToString("MM/dd/yy")</div></td>
+				<td>
+					<div>
+						@obj.Set1<br />
+						@obj.Set2<br />
+						@obj.Set3
+					</div>
+				</td>
+			</tr>
+		}
+	</tbody>
+</table>
+}

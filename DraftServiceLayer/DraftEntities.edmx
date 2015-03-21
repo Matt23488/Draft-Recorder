@@ -1,0 +1,643 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MTG_DRAFTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Announcements">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Content" Type="varchar(max)" Nullable="false" />
+          <Property Name="CreatedById" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Drafts">
+          <Key>
+            <PropertyRef Name="DraftId" />
+          </Key>
+          <Property Name="DraftId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Player1Id" Type="int" Nullable="false" />
+          <Property Name="Player2Id" Type="int" Nullable="false" />
+          <Property Name="Player3Id" Type="int" Nullable="false" />
+          <Property Name="Player4Id" Type="int" Nullable="false" />
+          <Property Name="Player5Id" Type="int" Nullable="false" />
+          <Property Name="Player6Id" Type="int" />
+          <Property Name="Player7Id" Type="int" />
+          <Property Name="Player8Id" Type="int" />
+          <Property Name="Set1Id" Type="int" Nullable="false" />
+          <Property Name="Set2Id" Type="int" Nullable="false" />
+          <Property Name="Set3Id" Type="int" Nullable="false" />
+          <Property Name="WinnerId" Type="int" />
+          <Property Name="DraftDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MagicSets">
+          <Key>
+            <PropertyRef Name="SetId" />
+          </Key>
+          <Property Name="SetId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SetName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExpansionName" Type="varchar" MaxLength="50" />
+          <Property Name="SetAbbreviation" Type="varchar" MaxLength="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Players">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="Phone" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__Announcem__Creat__36B12243">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Announcements" Type="Self.Announcements" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Announcements">
+              <PropertyRef Name="CreatedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player1I__145C0A3F">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player2I__15502E78">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player3I__164452B1">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player4I__173876EA">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player4Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player5I__182C9B23">
+          <End Role="Players" Type="Self.Players" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player5Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player6I__1920BF5C">
+          <End Role="Players" Type="Self.Players" Multiplicity="0..1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player6Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player7I__1A14E395">
+          <End Role="Players" Type="Self.Players" Multiplicity="0..1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player7Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player8I__1B0907CE">
+          <End Role="Players" Type="Self.Players" Multiplicity="0..1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Player8Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set1Id__1BFD2C07">
+          <End Role="MagicSets" Type="Self.MagicSets" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSets">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Set1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set2Id__1CF15040">
+          <End Role="MagicSets" Type="Self.MagicSets" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSets">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Set2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set3Id__1DE57479">
+          <End Role="MagicSets" Type="Self.MagicSets" Multiplicity="1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSets">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="Set3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__WinnerId__1ED998B2">
+          <End Role="Players" Type="Self.Players" Multiplicity="0..1" />
+          <End Role="Drafts" Type="Self.Drafts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Players">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Drafts">
+              <PropertyRef Name="WinnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MTG_DRAFTModelStoreContainer">
+          <EntitySet Name="Announcements" EntityType="Self.Announcements" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Drafts" EntityType="Self.Drafts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MagicSets" EntityType="Self.MagicSets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Players" EntityType="Self.Players" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Announcem__Creat__36B12243" Association="Self.FK__Announcem__Creat__36B12243">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Announcements" EntitySet="Announcements" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player1I__145C0A3F" Association="Self.FK__Drafts__Player1I__145C0A3F">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player2I__15502E78" Association="Self.FK__Drafts__Player2I__15502E78">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player3I__164452B1" Association="Self.FK__Drafts__Player3I__164452B1">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player4I__173876EA" Association="Self.FK__Drafts__Player4I__173876EA">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player5I__182C9B23" Association="Self.FK__Drafts__Player5I__182C9B23">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player6I__1920BF5C" Association="Self.FK__Drafts__Player6I__1920BF5C">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player7I__1A14E395" Association="Self.FK__Drafts__Player7I__1A14E395">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player8I__1B0907CE" Association="Self.FK__Drafts__Player8I__1B0907CE">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set1Id__1BFD2C07" Association="Self.FK__Drafts__Set1Id__1BFD2C07">
+            <End Role="MagicSets" EntitySet="MagicSets" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set2Id__1CF15040" Association="Self.FK__Drafts__Set2Id__1CF15040">
+            <End Role="MagicSets" EntitySet="MagicSets" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set3Id__1DE57479" Association="Self.FK__Drafts__Set3Id__1DE57479">
+            <End Role="MagicSets" EntitySet="MagicSets" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__WinnerId__1ED998B2" Association="Self.FK__Drafts__WinnerId__1ED998B2">
+            <End Role="Players" EntitySet="Players" />
+            <End Role="Drafts" EntitySet="Drafts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MTG_DRAFTModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Player">
+          <Key>
+            <PropertyRef Name="PlayerId" />
+          </Key>
+          <Property Name="PlayerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Drafts" Relationship="MTG_DRAFTModel.FK__Drafts__Player1I__145C0A3F" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts1" Relationship="MTG_DRAFTModel.FK__Drafts__Player2I__15502E78" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts2" Relationship="MTG_DRAFTModel.FK__Drafts__Player3I__164452B1" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts3" Relationship="MTG_DRAFTModel.FK__Drafts__Player4I__173876EA" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts4" Relationship="MTG_DRAFTModel.FK__Drafts__Player5I__182C9B23" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts5" Relationship="MTG_DRAFTModel.FK__Drafts__Player6I__1920BF5C" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts6" Relationship="MTG_DRAFTModel.FK__Drafts__Player7I__1A14E395" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts7" Relationship="MTG_DRAFTModel.FK__Drafts__Player8I__1B0907CE" FromRole="Player" ToRole="Draft" />
+          <NavigationProperty Name="Drafts8" Relationship="MTG_DRAFTModel.FK__Drafts__WinnerId__1ED998B2" FromRole="Player" ToRole="Draft" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Announcements" Relationship="MTG_DRAFTModel.FK__Announcem__Creat__36B12243" FromRole="Player" ToRole="Announcement" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="DraftEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Players" EntityType="Self.Player" />
+          <EntitySet Name="Drafts" EntityType="MTG_DRAFTModel.Draft" />
+          <EntitySet Name="MagicSets" EntityType="MTG_DRAFTModel.MagicSet" />
+          <AssociationSet Name="FK__Drafts__Player1I__145C0A3F" Association="MTG_DRAFTModel.FK__Drafts__Player1I__145C0A3F">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player2I__15502E78" Association="MTG_DRAFTModel.FK__Drafts__Player2I__15502E78">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player3I__164452B1" Association="MTG_DRAFTModel.FK__Drafts__Player3I__164452B1">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player4I__173876EA" Association="MTG_DRAFTModel.FK__Drafts__Player4I__173876EA">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player5I__182C9B23" Association="MTG_DRAFTModel.FK__Drafts__Player5I__182C9B23">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player6I__1920BF5C" Association="MTG_DRAFTModel.FK__Drafts__Player6I__1920BF5C">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player7I__1A14E395" Association="MTG_DRAFTModel.FK__Drafts__Player7I__1A14E395">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Player8I__1B0907CE" Association="MTG_DRAFTModel.FK__Drafts__Player8I__1B0907CE">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set1Id__1BFD2C07" Association="MTG_DRAFTModel.FK__Drafts__Set1Id__1BFD2C07">
+            <End Role="MagicSet" EntitySet="MagicSets" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set2Id__1CF15040" Association="MTG_DRAFTModel.FK__Drafts__Set2Id__1CF15040">
+            <End Role="MagicSet" EntitySet="MagicSets" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__Set3Id__1DE57479" Association="MTG_DRAFTModel.FK__Drafts__Set3Id__1DE57479">
+            <End Role="MagicSet" EntitySet="MagicSets" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Drafts__WinnerId__1ED998B2" Association="MTG_DRAFTModel.FK__Drafts__WinnerId__1ED998B2">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Draft" EntitySet="Drafts" />
+          </AssociationSet>
+          <EntitySet Name="Announcements" EntityType="MTG_DRAFTModel.Announcement" />
+          <AssociationSet Name="FK__Announcem__Creat__36B12243" Association="MTG_DRAFTModel.FK__Announcem__Creat__36B12243">
+            <End Role="Player" EntitySet="Players" />
+            <End Role="Announcement" EntitySet="Announcements" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Draft">
+          <Key>
+            <PropertyRef Name="DraftId" />
+          </Key>
+          <Property Name="DraftId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Player1Id" Type="Int32" Nullable="false" />
+          <Property Name="Player2Id" Type="Int32" Nullable="false" />
+          <Property Name="Player3Id" Type="Int32" Nullable="false" />
+          <Property Name="Player4Id" Type="Int32" Nullable="false" />
+          <Property Name="Player5Id" Type="Int32" Nullable="false" />
+          <Property Name="Player6Id" Type="Int32" />
+          <Property Name="Player7Id" Type="Int32" />
+          <Property Name="Player8Id" Type="Int32" />
+          <Property Name="Set1Id" Type="Int32" Nullable="false" />
+          <Property Name="Set2Id" Type="Int32" Nullable="false" />
+          <Property Name="Set3Id" Type="Int32" Nullable="false" />
+          <Property Name="WinnerId" Type="Int32" />
+          <NavigationProperty Name="Player1" Relationship="MTG_DRAFTModel.FK__Drafts__Player1I__145C0A3F" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player2" Relationship="MTG_DRAFTModel.FK__Drafts__Player2I__15502E78" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player3" Relationship="MTG_DRAFTModel.FK__Drafts__Player3I__164452B1" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player4" Relationship="MTG_DRAFTModel.FK__Drafts__Player4I__173876EA" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player5" Relationship="MTG_DRAFTModel.FK__Drafts__Player5I__182C9B23" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player6" Relationship="MTG_DRAFTModel.FK__Drafts__Player6I__1920BF5C" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player7" Relationship="MTG_DRAFTModel.FK__Drafts__Player7I__1A14E395" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="Player8" Relationship="MTG_DRAFTModel.FK__Drafts__Player8I__1B0907CE" FromRole="Draft" ToRole="Player" />
+          <NavigationProperty Name="MagicSet1" Relationship="MTG_DRAFTModel.FK__Drafts__Set1Id__1BFD2C07" FromRole="Draft" ToRole="MagicSet" />
+          <NavigationProperty Name="MagicSet2" Relationship="MTG_DRAFTModel.FK__Drafts__Set2Id__1CF15040" FromRole="Draft" ToRole="MagicSet" />
+          <NavigationProperty Name="MagicSet3" Relationship="MTG_DRAFTModel.FK__Drafts__Set3Id__1DE57479" FromRole="Draft" ToRole="MagicSet" />
+          <NavigationProperty Name="Winner" Relationship="MTG_DRAFTModel.FK__Drafts__WinnerId__1ED998B2" FromRole="Draft" ToRole="Player" />
+          <Property Name="DraftDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="MagicSet">
+          <Key>
+            <PropertyRef Name="SetId" />
+          </Key>
+          <Property Name="SetId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SetName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ExpansionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Drafts" Relationship="MTG_DRAFTModel.FK__Drafts__Set1Id__1BFD2C07" FromRole="MagicSet" ToRole="Draft" />
+          <NavigationProperty Name="Drafts1" Relationship="MTG_DRAFTModel.FK__Drafts__Set2Id__1CF15040" FromRole="MagicSet" ToRole="Draft" />
+          <NavigationProperty Name="Drafts2" Relationship="MTG_DRAFTModel.FK__Drafts__Set3Id__1DE57479" FromRole="MagicSet" ToRole="Draft" />
+          <Property Name="SetAbbreviation" Type="String" Nullable="false" MaxLength="3" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK__Drafts__Player1I__145C0A3F">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player2I__15502E78">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player3I__164452B1">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player4I__173876EA">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player4Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player5I__182C9B23">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player5Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player6I__1920BF5C">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player6Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player7I__1A14E395">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player7Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Player8I__1B0907CE">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Player8Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set1Id__1BFD2C07">
+          <End Type="MTG_DRAFTModel.MagicSet" Role="MagicSet" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSet">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Set1Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set2Id__1CF15040">
+          <End Type="MTG_DRAFTModel.MagicSet" Role="MagicSet" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSet">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Set2Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__Set3Id__1DE57479">
+          <End Type="MTG_DRAFTModel.MagicSet" Role="MagicSet" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MagicSet">
+              <PropertyRef Name="SetId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="Set3Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Drafts__WinnerId__1ED998B2">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="0..1" />
+          <End Type="MTG_DRAFTModel.Draft" Role="Draft" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Draft">
+              <PropertyRef Name="WinnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Announcement">
+          <Key>
+            <PropertyRef Name="AnnouncementId" />
+          </Key>
+          <Property Name="AnnouncementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Content" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedById" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Player" Relationship="MTG_DRAFTModel.FK__Announcem__Creat__36B12243" FromRole="Announcement" ToRole="Player" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <Association Name="FK__Announcem__Creat__36B12243">
+          <End Type="MTG_DRAFTModel.Player" Role="Player" Multiplicity="1" />
+          <End Type="MTG_DRAFTModel.Announcement" Role="Announcement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Player">
+              <PropertyRef Name="PlayerId" />
+            </Principal>
+            <Dependent Role="Announcement">
+              <PropertyRef Name="CreatedById" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MTG_DRAFTModelStoreContainer" CdmEntityContainer="DraftEntities">
+          <EntitySetMapping Name="Players">
+            <EntityTypeMapping TypeName="MTG_DRAFTModel.Player">
+              <MappingFragment StoreEntitySet="Players">
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="PlayerId" ColumnName="PlayerId" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Drafts">
+            <EntityTypeMapping TypeName="MTG_DRAFTModel.Draft">
+              <MappingFragment StoreEntitySet="Drafts">
+                <ScalarProperty Name="DraftDate" ColumnName="DraftDate" />
+                <ScalarProperty Name="WinnerId" ColumnName="WinnerId" />
+                <ScalarProperty Name="Set3Id" ColumnName="Set3Id" />
+                <ScalarProperty Name="Set2Id" ColumnName="Set2Id" />
+                <ScalarProperty Name="Set1Id" ColumnName="Set1Id" />
+                <ScalarProperty Name="Player8Id" ColumnName="Player8Id" />
+                <ScalarProperty Name="Player7Id" ColumnName="Player7Id" />
+                <ScalarProperty Name="Player6Id" ColumnName="Player6Id" />
+                <ScalarProperty Name="Player5Id" ColumnName="Player5Id" />
+                <ScalarProperty Name="Player4Id" ColumnName="Player4Id" />
+                <ScalarProperty Name="Player3Id" ColumnName="Player3Id" />
+                <ScalarProperty Name="Player2Id" ColumnName="Player2Id" />
+                <ScalarProperty Name="Player1Id" ColumnName="Player1Id" />
+                <ScalarProperty Name="DraftId" ColumnName="DraftId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MagicSets">
+            <EntityTypeMapping TypeName="MTG_DRAFTModel.MagicSet">
+              <MappingFragment StoreEntitySet="MagicSets">
+                <ScalarProperty Name="SetAbbreviation" ColumnName="SetAbbreviation" />
+                <ScalarProperty Name="ExpansionName" ColumnName="ExpansionName" />
+                <ScalarProperty Name="SetName" ColumnName="SetName" />
+                <ScalarProperty Name="SetId" ColumnName="SetId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Announcements">
+            <EntityTypeMapping TypeName="MTG_DRAFTModel.Announcement">
+              <MappingFragment StoreEntitySet="Announcements">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedById" ColumnName="CreatedById" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="AnnouncementId" ColumnName="AnnouncementId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

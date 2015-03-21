@@ -1,0 +1,14 @@
+﻿@model System.Collections.Generic.IList<MtgDraftRecorder.ViewModels.AnnouncementModel>
+
+@foreach(var announcement in Model)
+{
+	<div class="announcement">
+		<div class="title">
+			@announcement.Creator: @announcement.Title - @announcement.CreatedDate.Date.ToString("MM/dd/yy")
+		</div>
+		<div>
+			@announcement.Content
+		</div>
+	</div>
+}
+

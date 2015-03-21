@@ -1,0 +1,295 @@
+﻿html
+{
+	height: 100%;
+	width: 100%;
+	/*border: 1px solid transparent;*/
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	height: 100%;
+	width: 100%;
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #DCB;
+    background-color: #111; /*#002B36;*/
+	padding: 0;
+	/*border: 1px solid transparent;*/
+	border: 0;
+	margin: 0;
+}
+
+::selection
+{
+	background-color: #111;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin: 0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+table.tblList
+{
+	border-collapse: collapse;
+	border: 1px solid #666;
+	color: #B58900;
+	/*width: 50%;*/
+}
+
+table.tblList thead
+{
+	text-align: center;
+	background-color: #333;
+}
+
+table.tblList th
+{
+	border: 1px solid #666;
+	padding: 3px;
+}
+
+table.tblList tr.tblDataRow
+{
+	background-color: #1C1C1C;
+}
+
+table.tblList tr.tblDataRow:nth-child(2n+1)
+{
+	background-color: #000;
+}
+
+table.tblList td
+{
+	border: 1px solid #666;
+	padding: 1em;
+}
+
+table.tblList th.tblHeader
+{
+	font-size: 20px;
+}
+
+table.tblList tr.tblDataRow:hover
+{
+	background-color: #025;
+	cursor: pointer;
+}
+
+div#divHeader
+{
+	background-color: #444;
+	border-bottom: 2px solid #666;
+	color: white;
+	font-size: 2em;
+	padding: .6em;
+	height: 2em;
+	/*width: 100%;*/
+	position: relative;
+}
+
+div#divContent
+{
+	border-left: 2px solid #666;
+	margin-left: 10em;
+	padding-top: 1em;
+	padding-left: 3em;
+	height: 100%;
+	color: #888;
+}
+
+#divContent p
+{
+	width: 50em;
+}
+
+div#divNavigation
+{
+	float: left;
+	width: 10em;
+	height: 100%;
+	padding: 0;
+	padding-top: 3em;
+	background-color: #222;
+}
+
+.navContainer
+{
+	padding: 0;
+	margin: 0;
+	border-top: 1px solid #666;
+}
+
+div.divMainLink, div#divNavigation a
+{
+	color: #B58900;
+	background-color: #000;
+	font: bold 1.1em "Arial Narrow", "Franklin Gothic Medium", Arial;
+	display: block;
+	text-decoration: none;
+	padding: .6em;
+	border-bottom: 1px solid #666;
+	cursor: pointer;
+}
+
+/*div.divMainLink::selection, div#divNavigation a::selection
+{
+	background-color: #000;
+}*/
+
+div#divNavigation div.subNavigation a
+{
+	background-color: #222;
+}
+
+div#divNavigation a:hover,
+div#divNavigation div.subNavigation a:hover,
+div.divMainLink:hover
+{
+	background-color: #025;
+}
+
+#divDetails,
+#deleteDialog
+{
+	color: #888;
+	background-color: #1A1A1A;
+}
+
+.ui-widget-content
+{
+	background-color: #1A1A1A;
+	background-image: none;
+	border: 0;
+}
+
+.ui-dialog-title,
+.ui-button-text
+{
+	color: #888;
+}
+
+.ui-button:hover
+{
+	background-color: #B58900;
+}
+
+#divLogin
+{
+	position: absolute;
+	top: 2.5em;
+	right: 10px;
+}
+
+#displayUsername
+{
+	position: absolute;
+	top: 2.5em;
+	right: 10px;
+	font-size: 14px;
+	color: #888;
+}
+
+.divButton
+{
+	background-color: #886600;
+	font-size: 16px;
+	color: #111;
+	border: 1px solid #111;
+	cursor: pointer;
+	padding: 7px;
+	display: block;
+}
+
+#loginButton
+{
+	width: 40px;
+}
+
+#divLogin:hover,
+.divButton:hover
+{
+	background-color: #250;
+}
+
+.textBox
+{
+	color: #888;
+	background-color: #333;
+	border: 0;
+}
+
+.announcement
+{
+	color: #8F4;
+	text-align: center;
+	display: block;
+	padding-bottom: 3px;
+	border-bottom: 1px solid #666;
+	margin-bottom: 1px;
+}
+
+.announcement .title
+{
+	font-weight: bold;
+}
+
+#divAnnouncement
+{
+	width: 100%;
+	padding: 0;
+	border: 0;
+	margin: 0;
+}

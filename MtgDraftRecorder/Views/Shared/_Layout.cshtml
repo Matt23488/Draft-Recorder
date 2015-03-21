@@ -1,0 +1,139 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/themes/jquery-ui-1.11.1.custom/jquery-ui.css")
+	@Styles.Render("~/Content/css")
+	@Scripts.Render("~/Scripts/Site.js")
+    @Scripts.Render("~/bundles/modernizr")
+	@Scripts.Render("~/Content/themes/jquery-ui-1.11.1.custom/jquery-ui.js")
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/Scripts/jquery-ui-1.8.24.js")
+</head>
+<body>
+	<div id="divAnnouncement">
+		@{ Html.RenderAction("Banner", "Announcement"); }
+	</div>
+	@*<br />*@
+	<div id="divHeader">
+		<div style="text-align: center;">
+			<img src="@Url.Content("~/Content/Images/Color_Wheel.png")" style="width: 2em; height: 2em;" />
+			<img src="@Url.Content("~/Content/Images/White_mana.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+			<img src="@Url.Content("~/Content/Images/Blue_mana.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+			<img src="@Url.Content("~/Content/Images/Black_mana.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+			<img src="@Url.Content("~/Content/Images/Red_mana.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+			<img src="@Url.Content("~/Content/Images/Green_mana.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+			<img src="@Url.Content("~/Content/Images/Color_Wheel.png")" style="width: 2em; height: 2em; margin-left: -0.75em;" />
+		</div>
+		@if (!Request.IsAuthenticated) {
+		<span id="divLogin" class="divButton" onclick="AdminLogin()">Admin Login</span>
+		}
+		else { 
+		<div id="displayUsername" onclick="AdminLogout()" style="cursor: pointer;">
+			Logged in as:<br />
+			@Context.User.Identity.Name
+		</div>
+		}
+		<div id="loginDialog" style="visibility: hidden; color: #B58900;">
+			<div id="loginErrorMessage" style="visibility: hidden; color: red;"></div>
+			<p>Please enter your username and password:</p>
+			<input class="textBox" type="text" id="loginUsername" /><br />
+			<input class="textBox" type="password" id="loginPassword" /><br /><br />
+		</div>
+		<div id="logoutDialog" style="visibility: hidden; color: #B58900;">
+			<div id="logoutErrorMessage" style="visibility:hidden; color: red;"></div>
+			<p>Are you sure you want to log out?</p>
+		</div>
+	</div>
+	<div id="divNavigation">
+		@{ Html.RenderAction("Menu", "Navigation"); }
+	</div>
+	<div id="divContent">
+		@RenderBody()
+	</div>
+    @RenderSection("scripts", required: false)
+
+	@if(!Request.IsAuthenticated)
+	{
+	<script type="text/javascript">
+		function AdminLogin()
+		{
+			$("#loginDialog").dialog({
+				show: "fade",
+				hide: "fade",
+				modal: true,
+				title: "Admin Login",
+				buttons: {
+					"Login" : AttemptLogin
+				}
+			});
+			$("#loginDialog").css({ "visibility": "visible" });
+			$("#loginUsername").focus();
+		}
+		function AttemptLogin()
+		{
+			var submitUsername = $("#loginUsername").val();
+			var submitPassword = $("#loginPassword").val();
+
+			$.ajax({
+				type: "POST",
+				url: "@Url.Action("Login", "Main")",
+				data: { Username: submitUsername, Password: submitPassword },
+				success: function (message) {
+					if (message == "RESULT_OK") {
+						location.reload();
+					}
+					else {//DOESNT WORK
+						$("#loginErrorMessage").text(message).css({ "visibility" : "visible" });
+					}
+				},
+				error: function () {
+					$("#loginErrorMessage").text("Error communicating with server").css({ "visibility": "visible" });
+				}
+			});
+		}
+	</script>
+	}
+	else
+	{
+	<script type="text/javascript">
+		function AdminLogout()
+		{
+			$("#logoutDialog").dialog({
+				show: "fade",
+				hide: "fade",
+				modal: true,
+				title: "Admin Login",
+				buttons: {
+					"Confirm" : AttemptLogout
+				}
+			});
+			$("#logoutDialog").css({ "visibility": "visible" });
+		}
+		function AttemptLogout()
+		{
+			$.ajax({
+				type: "POST",
+				url: "@Url.Action("Logout", "Main")",
+				success: function (message) {
+					if (message == "RESULT_OK")
+					{
+						location.reload();
+					}
+					else
+					{
+						$("#logoutErrorMessage").text(message).css({ "visibility": "visible" });
+					}
+				},
+				error: function()
+				{
+					$("#logoutErrorMessage").text("Error communicating with server").css({ "visibility": "visible" });
+				}
+			});
+		}
+	</script>
+	}
+</body>
+</html>

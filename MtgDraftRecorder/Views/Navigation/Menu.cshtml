@@ -1,0 +1,45 @@
+﻿<div class="navContainer">
+	@*<div class="divMainLink">*@@Html.ActionLink("About", "About", "Main")@*</div>*@
+	<div class="divMainLink" onclick="AnimatePlayerNav()">Player Stuff</div>
+	<div id="divPlayer" class="subNavigation" style="display: none;">
+		@Html.ActionLink("List", "List", "Player")
+		@Html.ActionLink("Add Player", "Add", "Player")
+	</div>
+	<div id="DraftHeading" class="divMainLink" onclick="AnimateDraftNav()">Draft Stuff</div>
+	<div id="divDraft" class="subNavigation" style="display: none;">
+		@Html.ActionLink("Start Draft", "Start", "Draft")
+		@Html.ActionLink("Draft History", "History", "Draft")
+	</div>
+	<div id="ErrorHeading" class="divMainLink" onclick="AnimateErrorNav()">Error Stuff</div>
+	<div id="divError" class="subNavigation" style="display: none;">
+		@Html.ActionLink("404", "PageNotFound", "Error")
+		@Html.ActionLink("403", "AccessDenied", "Error")
+	</div>
+</div>
+
+<script type="text/javascript">
+	function AnimatePlayerNav()
+	{
+		$('#DraftHeading').css({ 'border-top': '1px solid #666' });
+		$('#divPlayer').slideToggle(750, 'easeOutBounce',
+			function () {
+				$('#DraftHeading').css({ 'border-top': '0' });
+			});
+	}
+	function AnimateDraftNav()
+	{
+		$('#ErrorHeading').css({ 'border-top': '1px solid #666' });
+		$('#divDraft').slideToggle(750, 'easeOutBounce',
+			function () {
+				$('#ErrorHeading').css({ 'border-top': '0' });
+			});
+	}
+	function AnimateErrorNav()
+	{
+		$('div.navContainer').css({ 'border-bottom': '1px solid #666' });
+		$('#divError').slideToggle(750, 'easeOutBounce',
+			function () {
+				$('div.navContainer').css({ 'border-bottom': '0' });
+			});
+	}
+</script>

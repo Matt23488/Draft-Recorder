@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30723.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtgDraftRecorder", "MtgDraftRecorder\MtgDraftRecorder.csproj", "{E5E38F29-3B42-4A6E-80BE-976D53A6EE14}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DraftServiceLayer", "DraftServiceLayer\DraftServiceLayer.csproj", "{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMS", "SMS\SMS.csproj", "{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Applications", "Applications", "{A3009BDB-A78E-4808-939E-A11E2A1199D8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{EF4CEB84-9918-413B-B3B0-76B37984687B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{BC48AC84-73B4-4A70-BDEC-2C56C31CE42C}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "MTG_DRAFT", "MTG_DRAFT\MTG_DRAFT.sqlproj", "{CF49F98F-57B6-43BF-90EE-0763BC31D907}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E5E38F29-3B42-4A6E-80BE-976D53A6EE14}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E5E38F29-3B42-4A6E-80BE-976D53A6EE14}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E5E38F29-3B42-4A6E-80BE-976D53A6EE14}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E5E38F29-3B42-4A6E-80BE-976D53A6EE14}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E5E38F29-3B42-4A6E-80BE-976D53A6EE14} = {A3009BDB-A78E-4808-939E-A11E2A1199D8}
+		{C2A1B679-46B4-4EAC-98C0-3D8E0243FCE5} = {BC48AC84-73B4-4A70-BDEC-2C56C31CE42C}
+		{B38E3B99-B52D-4DD0-B38A-CC7BD3B10563} = {BC48AC84-73B4-4A70-BDEC-2C56C31CE42C}
+		{CF49F98F-57B6-43BF-90EE-0763BC31D907} = {EF4CEB84-9918-413B-B3B0-76B37984687B}
+	EndGlobalSection
+EndGlobal

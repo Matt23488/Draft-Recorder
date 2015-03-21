@@ -1,0 +1,36 @@
+﻿@model System.Collections.Generic.IList<MtgDraftRecorder.ViewModels.DraftModel>
+
+@{
+    ViewBag.Title = "Draft History";
+}
+
+<h1>Draft List</h1>
+
+<table class="tblList">
+	<thead>
+		<tr>
+			<th colspan="3" class="tblHeader"><div><strong>Drafts</strong></div></th>
+		</tr>
+		<tr>
+			<th><div><strong>Date</strong></div></th>
+			<th><div><strong>Sets</strong></div></th>
+			<th><div><strong>Winner</strong></div></th>
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var obj in Model)
+		{
+			<tr>
+				<td><div>@obj.DraftDate.ToString("MM/dd/yy")</div></td>
+				<td>
+					<div>
+						@obj.Set1<br />
+						@obj.Set2<br />
+						@obj.Set3
+					</div>
+				</td>
+				<td><div>@obj.Winner</div></td>
+			</tr>
+		}
+	</tbody>
+</table>

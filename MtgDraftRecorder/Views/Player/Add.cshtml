@@ -1,0 +1,25 @@
+﻿@model MtgDraftRecorder.ViewModels.PlayerModel
+
+@{
+    ViewBag.Title = "Add New Player";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add a player:</h1>
+
+@using(Html.BeginForm())
+{
+	<div>
+		@Html.ValidationMessageFor(obj => obj.FirstName)
+		@Html.LabelFor(obj => obj.FirstName):<br />
+		@Html.TextBoxFor(obj => obj.FirstName, new { @class = "textBox" })
+	</div>
+	<br />
+	<div>
+		@Html.ValidationMessageFor(obj => obj.LastName)
+		@Html.LabelFor(obj => obj.LastName):<br />
+		@Html.TextBoxFor(obj => obj.LastName, new { @class = "textBox" })
+	</div>
+	<br />
+	<input class="divButton" type="submit" value="Confirm" />
+}

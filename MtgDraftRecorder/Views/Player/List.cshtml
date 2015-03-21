@@ -1,0 +1,161 @@
+﻿@model System.Collections.Generic.IList<MtgDraftRecorder.ViewModels.PlayerModel>
+
+@{
+    ViewBag.Title = "Player List";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<script type="text/javascript" src="@Url.Content("~/Scripts/jquery-ui-1.8.24.js")"></script>*@
+@*<link href="@Url.Content("~/Content/themes/base/jquery-ui.css")" rel="stylesheet" />*@
+
+<h1>Player List</h1>
+
+<table id="playerTable" class="tblList">
+	<thead>
+		@*<tr>
+			<th colspan="2" class="tblHeader"><div><strong>Players</strong></div></th>
+		</tr>*@
+		<tr>
+			<th><div style="font-size: 20px;"><strong>Name</strong></div></th>
+			<th><div style="font-size: 20px;"><strong>Wins</strong></div></th>
+			@if(Request.IsAuthenticated)
+		    {
+				<th style="width: 20px;"><div style="font-size: 20px;"><strong>Delete</strong></div></th>
+		    }
+		</tr>
+	</thead>
+	<tbody>
+		@foreach (var obj in Model)
+		{
+			<tr id="@obj.Id" class="tblDataRow">
+				<td onclick="ShowWins(@obj.Id, '@obj.FirstName', '@obj.LastName')"><div>@obj.FirstName @obj.LastName</div></td>
+				<td><div>@obj.Wins</div></td>
+				@if(Request.IsAuthenticated)
+				{
+					<td><div style="padding: 10px;"><div class="divButton" onclick="DeletePlayer(@obj.Id, '@obj.FirstName', '@obj.LastName')">X</div></div></td>
+				}
+			</tr>
+		}
+	</tbody>
+</table>
+<br />
+<div id="divDetails" style="visibility: hidden;"></div>
+<div id="deleteDialog" style="visibility: hidden;"></div>
+
+<script type="text/javascript">
+	function ShowWins(playerId, fName, lName)
+	{
+		var transferTo = "#" + playerId;
+		$.ajax({
+			type: "POST",
+			url: "@Url.Action("WonDraftsByPlayerId", "Draft")",
+			data: { Id: playerId, FirstName: fName, LastName: lName },
+			dataType: "html",
+			success: function(message)
+			{
+				$("#divDetails").css({ "visibility": "visible" });
+
+				@*if ($("#divDetails").dialog("isOpen") == true) {
+					//$("#divDetails")
+					//.html(message)
+					//.dialog({
+					//	position:
+					//	{
+					//		my: "left top",
+					//		at: "right top",
+					//		of: $("#playerTable"),
+					//		offset: "10 0",
+					//		collision: "fit",
+					//		within: $("#divContent")
+					//	}
+					//});
+					$("#divDetails")
+					//.dialog({ "right": "+50px" }, { duration: 1500 });
+					.animate({ right : "+50px" }, 'slow');
+				}
+				else {*@
+					$("#divDetails")
+					.html(message)
+					.dialog({
+						autoOpen: true,
+						title: "Number of Wins",
+						width: 400,
+						height: $("#playerTable").height() - 6,
+						modal: false,
+						draggable: false,
+						resizable: false,
+						show: "fade",
+						hide: "fade"
+					})
+					.dialog("widget")
+					.position({
+						my: "left top",
+						at: "right top",
+						of: $("#playerTable"),
+						offset: "10 0",
+						collision: "fit",
+						within: $("#divContent")
+					})
+				@*}*@
+			},
+			error: function(message)
+			{
+				alert("ERROR");
+			}
+		});
+	}
+</script>
+@if(Request.IsAuthenticated)
+{
+<script type="text/javascript">
+	function DeletePlayer(playerId, fName, lName)
+	{
+		$("#divDetails").dialog("close");
+		var data = "Are you sure you want to delete " + fName + " " + lName + "?"
+		$("#deleteDialog").css({ "visibility": "visible" });
+		$("#deleteDialog").html(data).dialog({
+			autoOpen: true,
+			width: 400,
+			modal: true,
+			draggable: false,
+			resizable: false,
+			show: "fade",
+			hide: "fade",
+			buttons: {
+				"Delete" : function()
+				{
+					ConfirmDelete(playerId);
+				}
+			}
+		});
+	}
+
+	function ConfirmDelete(playerId)
+	{
+		$.ajax({
+			type: "POST",
+			url: "@Url.Action("Delete", "Player")",
+			data: { Id: playerId },
+			success: function(message)
+			{
+				if(message == "RESULT_OK")
+				{
+					location.reload();
+				}
+				else if(@Request.IsAuthenticated == false)
+				{
+					alert("Stop trying to javascript inject my site!");
+				}
+				else
+				{
+					$("#deleteDialog").html("ERROR: " + message);
+				}
+			},
+			error: function(message)
+			{
+				alert("Error communicating with the server.");
+			}
+		});
+	}
+</script>
+}

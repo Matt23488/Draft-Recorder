@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+	<title>@ViewBag.Title</title>
+	@Styles.Render("~/Content/Error.css")
+</head>
+<body>
+    <hgroup>
+        <h1>HTTP @ViewBag.ErrorNo Error</h1>
+    </hgroup>
+	<div id="divContent">
+		@RenderBody()
+
+		Redirecting to <a href="@Url.Action("About", "Main")" style="color: #0094ff;">Home</a> in 10 seconds.
+		<div id="divCountdown"><h3>10</h3></div>
+
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/Scripts/error.js")
+	</div>
+	<div id="FireFooter"></div>
+</body>
+</html>
